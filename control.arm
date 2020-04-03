@@ -1,0 +1,220 @@
+ #include <Servo.h>
+Servo servo1, servo2,servo3,servo4, servo5,servo6;
+Servo myservo1,myservo2,myservo3,myservo4,myservo5,myservo6;
+int pos1,pos2,pos3,pos4,pos5,pos6;
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+servo1.attach(3);
+servo2.attach(5);
+servo3.attach(6);
+servo4.attach(9);
+servo5.attach(10);
+servo6.attach(11);
+servo1.write(90);
+servo2.write(88);
+servo3.write(95);
+servo4.write(93);
+servo5.write(90);
+servo6.write(90);
+}
+void loop() {
+//char tombol = Serial.read(); 
+/*if(tombol=='N'){
+if(Serial.available()){
+char masuk = Serial.read();
+if(masuk=='P'){
+servo1.write(0);
+servo2.write(0);
+servo3.write(0);
+servo4.write(0);
+servo5.write(0);
+servo6.write(0);
+  Serial.println(masuk);
+  }
+if(masuk=='Q'){
+  step6();
+  Serial.println(masuk);
+  }
+if(masuk=='W'){
+  step2();
+  Serial.println(masuk);
+  }
+if(masuk=='E'){
+  step1();
+  step2();
+  Serial.println(masuk);
+  }
+if(masuk=='R'){
+  step1(),  step2();
+  Serial.println(masuk);
+  }
+if(masuk=='T'){
+  step1();
+  step2();
+  step3();
+  step4();
+  step5();
+  Serial.println(masuk);
+}}
+}
+*/
+//if(tombol){
+  if(Serial.available()>= 2 )
+      {
+        unsigned int servopos = Serial.read();
+        unsigned int servopos1 = Serial.read();
+        unsigned int realservo = (servopos1 *256) + servopos; 
+        Serial.println(realservo); 
+    if (realservo >= 1000 && realservo <1180){
+        int servo1 = realservo;
+        servo1 = map(servo1, 1000,1180,0,180);
+        myservo1.write(servo1);
+        Serial.println("servo 1 ON");
+        delay(10);
+        } 
+    if (realservo >=2000 && realservo <2180){
+          int servo2 = realservo;
+          servo2 = map(servo2,2000,2180,0,180);
+          myservo2.write(servo2);
+          Serial.println("servo 2 On");
+          delay(10);     
+       }
+    if (realservo >=3000 && realservo < 3180){
+          int servo3 = realservo;
+          servo3 = map(servo3, 3000, 3180,0,180);
+          myservo3.write(servo3);
+          Serial.println("servo 3 On");
+          delay(10);
+        }
+    if (realservo >=4000 && realservo < 4180){
+          int servo4 = realservo;
+          servo4 = map(servo4, 4000, 4180,0,180);
+          myservo4.write(servo4);
+          Serial.println("servo 4 On");
+          delay(10);
+        }
+    if (realservo >=5000 && realservo < 5180){
+          int servo5 = realservo;
+          servo5 = map(servo5, 5000, 5180,0,180);
+          myservo5.write(servo5);
+          Serial.println("servo 5 On");
+          delay(10);
+        }
+    if (realservo >=6000 && realservo < 6180){
+          int servo6 = realservo;
+          servo6 = map(servo6, 6000, 6180,0,180);
+          myservo6.write(servo6);
+          Serial.println("servo 6 On");
+          delay(10);
+        }
+}}
+
+
+
+
+
+
+void step1(){
+  for(pos3=95; pos3<=140; pos3+=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+  
+  for(pos4=93; pos4 >20; pos4-=1)
+  {
+  servo4.write(pos4); 
+  delay(35);}
+}
+void step2(){
+  for(pos2=88; pos2 >=70; pos2-=1)
+  {
+  servo2.write(pos2); 
+  delay(35);}
+  for(pos3=140; pos3 <=165; pos3+=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+  for(pos4=20; pos4<=120 ; pos4+=1)
+  {
+  servo4.write(pos4); 
+  delay(35);}
+}
+void step3(){
+  for(pos5=90; pos5 >=70; pos5-=1)
+  {
+  servo5.write(pos5); 
+  delay(35);}
+}
+void step4(){
+  for(pos3=165; pos3 >=20; pos3-=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+  for(pos4=165; pos4>=140; pos4-=1)
+  {
+  servo4.write(pos4); 
+  delay(35);}
+}
+void step5(){
+  for(pos3=140; pos3 >=90; pos3-=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+}
+void step6(){
+  for(pos1=0; pos1 <=90; pos1+=1)
+  {
+  servo1.write(pos1); 
+  delay(35);}
+  for(pos2=90; pos2 >=50; pos2-=1)
+  {
+  servo2.write(pos2); 
+  delay(35);}
+  for(pos3=90; pos3 <=125; pos3+=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+  for(pos4=20; pos4 <=50; pos4+=1)
+  {
+  servo4.write(pos4); 
+  delay(35);}
+}
+void step7(){
+  for(pos2=50; pos2 <90; pos3+=1)
+  {
+  servo2.write(pos2); 
+  delay(35);}
+  for(pos3=125; pos3 <=165; pos3+=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+  for(pos5=70; pos5 <=90; pos5+=1)
+  {
+  servo5.write(pos5); 
+  delay(35);}
+}
+void stepde8(){
+  for(pos5=90; pos5 >=70; pos5-=1)
+  {
+  servo5.write(pos5); 
+  delay(35);}
+}
+void step9(){
+  for(pos3=140; pos3 >=90; pos3-=1)
+  {
+  servo3.write(pos3); 
+  delay(35);}
+}
+void step10(){
+  for(pos5=70; pos5 <=90; pos5+=1)
+  {
+  servo5.write(pos5); 
+  delay(35);}
+  for(pos3=90; pos3 <=110; pos3+=1)
+  {
+  servo3.write(pos3); 
+  delay(35);
+  }
+}
+
